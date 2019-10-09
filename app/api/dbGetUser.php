@@ -1,24 +1,26 @@
 <?php
 
     include('dbConnect.php');
-    $testdata = array();
-    $query = "SELECT * FROM tst";
+
+    $id = 1;
+
+    $user = array();
+    $query = "SELECT * FROM tst WHERE id=?";
 
     $statement = $mysqli->prepare($query);
+
+    $statement->bind_param("i", $id);
 
     $statement->execute();
 
     $result = $statement->get_result();
 
-    $i = 0;
-
     while ($row = mysqli_fetch_assoc($result)){
-        $testdata[$i]['id'] = $row['id'];
-        $testdata[$i]['username'] = $row['username'];
-        $i++;
+        $user['id'] = $row['id'];
+        $user['username'] = $row['username'];
     }
 
-    $json = json_encode($testdata);
+    $json = json_encode($user);
     echo $json;
     $result->free();
     $statement->close();
