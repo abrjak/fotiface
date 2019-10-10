@@ -1,11 +1,16 @@
-<!DOCTYPE html>
+<?php
 
-<html ng-app="fotiface">
+session_start();
+
+?>
+
+<!DOCTYPE html>
+<html>
 
 <head>
-    <title>fotiface - Template</title>
+    <meta charset="utf-8">
 
-    <!-- Einbindung CDN Bootstrap & AngularJS -->
+    <title>fotiface - Login</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -13,34 +18,56 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
 
-    <script src="app/app.js"></script>
-
 </head>
 
 <body>
+    <br />
+    <h3 align="center">fotiface Login</h3>
+    <br />
 
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#!home">fotiface</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#!home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#!user">User</a>
-                    </li>
-                </ul>
+    <div ng-app="fotiface_login" ng-controller="fotiface_login_controller" class="container form_style">
+        <?php
+                if(!isset($_SESSION["name"]))
+                {
+        ?>
+        <div class="panel panel-default" ng-show="login_form">
+            <div class="panel-heading">
+                <h3 class="panel-title">Login</h3>
             </div>
-        </nav>
-
-        <div ng-view></div>
-
+            <div class="panel-body">
+                <form method="post" ng-submit="submitLogin()">
+                    <div class="form-group">
+                        <label>Enter Your Email</label>
+                        <input type="text" name="email" ng-model="loginData.email" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Your Password</label>
+                        <input type="password" name="password" ng-model="loginData.password" class="form-control" />
+                    </div>
+                    <div class="form-group" align="center">
+                        <input type="submit" name="login" class="btn btn-primary" value="Login" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <?php
+            }
+            else
+            {
+        ?>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Welcome to system</h3>
+            </div>
+            <div class="panel-body">
+                <h1>Welcome - <?php echo $_SESSION["name"];?></h1>
+                <a href="logout.php">Logout</a>
+            </div>
+        </div>
+        <?php
+            }
+        ?>
+    </div>
 </body>
 
 </html>
