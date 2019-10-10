@@ -23,6 +23,6 @@ app.controller('UserController', function($scope, $http){
 
     $http.get('api/dbGetAllUser.php').then(function(response){
         $scope.user = response.data;
-    })
+    });
 });
 
