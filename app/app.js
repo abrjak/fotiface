@@ -2,11 +2,11 @@ var app = angular.module('fotiface', ['ngRoute']);
 app.config(function($routeProvider){
     $routeProvider.
     when('/home', {
-        template: require('views/home.template.html'),
+        templateUrl: ('app/views/home.template.html'),
         controller: 'HomeController'
     }).
     when('/user', {
-        template: require('views/user.template.html'),
+        templateUrl: ('app/views/user.template.html'),
         controller: 'UserController'
     }).
     otherwise({
