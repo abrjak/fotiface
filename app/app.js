@@ -5,9 +5,9 @@ app.config(function($routeProvider){
         templateUrl: 'app/views/login.template.php',
         controller: 'LoginController' 
     }).
-    when('/home', {
-        templateUrl: 'app/views/home.template.php',
-        controller: 'HomeController'
+    when('/gallery', {
+        templateUrl: 'app/views/gallery.template.php',
+        controller: 'GalleryController'
     }).
     when('/user', {
         templateUrl: 'app/views/user.template.php',
@@ -22,8 +22,8 @@ app.controller('LoginController', function($scope){
     $scope.title = 'Login Page';
 });
 
-app.controller('HomeController', function($scope){
-    $scope.title = "Home Page";
+app.controller('GalleryController', function($scope){
+    $scope.title = "Gallery";
 });
 
 app.controller('UserController', function($scope, $http){

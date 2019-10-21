@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 		if(!preg_match("/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{5,}/", $username) || strlen($username) > 30){
 			$error .= "Der Benutzername entspricht nicht dem geforderten Format.<br />";
         }
-        echo password_hash('Password123', PASSWORD_DEFAULT);
 	}
 	// password
 	if(!empty(trim($_POST['loginPassword']))){
@@ -81,8 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
                 }
                 ?>
             </form>
-            <hr />
+            <!-- <hr />
             <a class="pull-left" href="register.php">Register</a>
-            <a class="pull-right" href="forgotpassword.php">I forgot my Password</a>
+            <a class="pull-right" href="forgotpassword.php">I forgot my Password</a> -->
         </div>
 </div>
