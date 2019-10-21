@@ -22,8 +22,12 @@ app.controller('LoginController', function($scope){
     $scope.title = 'Login Page';
 });
 
-app.controller('GalleryController', function($scope){
+app.controller('GalleryController', function($scope, $http){
     $scope.title = "Gallery";
+
+    $http.get('app/api/dbGetUserImages.php').then(function(response){
+        $scope.images = response.data;
+    });
 });
 
 app.controller('UserController', function($scope, $http){

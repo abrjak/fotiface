@@ -2,11 +2,15 @@
 
 include('dbConnect.php');
 
-$imagename = $_FILES["uploadImage"]["name"];
+$uploadImage = $_FILES["uploadImage"]["name"];
 
-$imagetmp = addslashes(file_get_contents($_FILES['uploadImage']['tmp_name']));
+$folder = "images/";
 
-$query = "INSERT INTO tbl_image(user_id, image, image_name) VALUES(1, '$imagetmp', '$imagename')";
+$imagePath = "$folder".$_FILES["uploadImage"]["name"];
+
+move_uploaded_file($_FILES["uploadImage"]["tmp_name"], $imagePath);
+
+$query = "INSERT INTO tbl_image (fk_user_id, image_path, image_name) VALUES(1, '$imagePath', '$uploadImage')";
 
 $statement = $mysqli->prepare($query);
 
