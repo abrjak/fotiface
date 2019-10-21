@@ -2,13 +2,13 @@
     session_start();
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html lang="de">
 
 <html ng-app="fotiface">
 
 <head>
-
-    <title>fotiface - Template</title>
+    <meta charset="utf-8">
+    <title>fotiface</title>
 
     <!-- Einbindung CDN Bootstrap & AngularJS -->
 
@@ -24,7 +24,7 @@
 
 <body>
 
-    <div ng-view></div>
+    <div ng-view class="container-fluid"></div>
 
 </body>
 

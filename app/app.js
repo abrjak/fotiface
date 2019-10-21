@@ -19,9 +19,11 @@ app.controller('LoginController', function($scope, $http, $location){
     $http.get('app/api/getPHPSession.php').then(function(response){
        if(response.data == 0){
 
-        $scope.title = 'Login Page';
+        $scope.title = 'Login';
 
-        $scope.error = "";
+        $scope.closeMsg = function(){
+            $scope.alertMsg = false;
+        }
 
         $scope.submitLogin = function(){
             $http({
@@ -30,7 +32,8 @@ app.controller('LoginController', function($scope, $http, $location){
                 data : $scope.loginData
             }).then(function(response){
                 if(response.data.error != ''){
-                    $scope.error = response.data.error;
+                    $scope.alertMsg = true;
+                    $scope.alertMessage = response.data.error;
                 } else {
                    $location.path('/gallery');
                 }
@@ -46,7 +49,7 @@ app.controller('LoginController', function($scope, $http, $location){
 });
 
 app.controller('GalleryController', function($scope, $http, $location){
-    $scope.title = "Gallery";
+    $scope.title = "Gallerie";
 
     $http.get('app/api/getPHPSession.php').then(function(response){
         if(response.data == 0){

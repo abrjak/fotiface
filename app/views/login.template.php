@@ -6,18 +6,26 @@
 	</div>
 
 	<div class="container">
-            <h3>{{title}}</h3>
+		<br />
+			<h1>{{title}}</h1>
+			<hr />
+
+			<div class="alert alert-danger alert-dismissible" ng-show="alertMsg">
+    			<a href="#" class="close" ng-click="closeMsg()" aria-label="close">&times;</a>
+    			{{alertMessage}}
+   			</div>
+
             <form method="POST" ng-submit="submitLogin()">
 				<div class="form-group">
-					<label>Username:</label>
+					<label>Benutzername:</label>
 					<input type ="text" name="username" ng-model="loginData.username" class="form-control" required/>
 				</div>
 				<div class="form-group">
-					<label>Password:</label>
+					<label>Passwort:</label>
 					<input type="password" name="password" ng-model="loginData.password" class="form-control" required/>
 				</div>
-				<div class="form-group" align="center">
-					<input type="submit" name="login" class="btn btn-primary" value="Login"/>
+				<div class="form-group text-center">
+					<input type="submit" name="login" class="btn btn-primary" value="Einloggen"/>
 				</div>
             </form>
 		</div>
