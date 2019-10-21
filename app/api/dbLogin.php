@@ -23,7 +23,7 @@ $result = $statement->get_result();
 if($result->num_rows>0){
     while ($row = $result->fetch_assoc()){
         if(password_verify($form_data->password, $row['password'])){
-            $_SESSION['userId'] = $row['id'];
+            $_SESSION["userId"] = $row['id'];
         } else {
             $validation_error = 'Benutzername oder Passwort sind falsch';
         }
