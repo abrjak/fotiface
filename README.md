@@ -9,10 +9,8 @@ Modulprojekt zum Informatik-Modul 152 an der GiBM-IT Pratteln, 4. Lehrjahr.
 4. In phpMyAdmin eine neue Tabelle mit dem Namen 'fotiface' und Kollation 'latin1_swedish_ci' anlegen. Es müssen keine speziellen Rechte für die Datenbank angelegt werden, die Datenbank soll mit dem User 'root' und ohne Password erreichbar sein.
 5. Die erstellte Datenbank auswählen und unter dem Tab 'Importieren' unter dem Abschnitt 'Zu importierende Datei:' die Datei 'fotiface_db.sql' aus dem Explorer auswählen. Diese Datei liegt im root-Ordner des Projekts. Anschliessend auf 'OK' klicken und die Datenbank wird aus der Datei importiert.
 6. Die fotiface-Webapplikation im Webbrowser unter folgender URL aufrufen: http://localhost/fotiface/.
-7. Anmeldung mit folgenden beiden Benutzern möglich:
-   (Benutzername | Passwort)
+7. Anmeldung mit folgenden beiden Benutzern möglich (Benutzername | Passwort):
   - Abrjak01 | Password123
   - Brodan01 | Password123
 
-
-Weitere Dokumentationen können unter dem Wiki eingesehen werden.
+*Weitere Dokumentationen können unter dem Tab 'Wiki' eingesehen werden.*
