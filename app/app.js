@@ -18,8 +18,25 @@ app.config(function($routeProvider){
     });
 });
 
-app.controller('LoginController', function($scope){
+app.controller('LoginController', function($scope, $http){
     $scope.title = 'Login Page';
+
+    $scope.error = "";
+
+    $scope.submitLogin = function(){
+        $http({
+            method : "POST",
+            url : "app/api/dbLogin.php",
+            data : $scope.loginData
+        }).then(function(response){
+            if(response.error != ''){
+                $scope.error = response.error;
+            } else {
+            location.replace("http://localhost:8082/fotiface/#!/gallery");
+            }
+        });
+    };
+
 });
 
 app.controller('GalleryController', function($scope, $http){

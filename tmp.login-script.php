@@ -1,3 +1,25 @@
+<!DOCTYPE html>
+
+<html ng-app="fotiface">
+
+<head>
+
+    <title>fotiface - Template</title>
+
+    <!-- Einbindung CDN Bootstrap & AngularJS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+
+    <script src="app/app.js"></script>
+
+</head>
+
+<body>
+
 <?php
 // Establish DB-Connection
 include('app/api/dbConnect.php');
@@ -11,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 		if(!preg_match("/(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{5,}/", $username) || strlen($username) > 30){
 			$error .= "Der Benutzername entspricht nicht dem geforderten Format.<br />";
         }
-        echo password_hash('Password123', PASSWORD_DEFAULT);
 	}
 	// password
 	if(!empty(trim($_POST['loginPassword']))){
@@ -24,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
     // Check DB for User and Password
     if(empty($error)){
         // TODO SELECT Query erstellen, user und passwort mit Datenbank vergleichen
-		$query = "SELECT username, password FROM user WHERE username=?";
+		$query = "SELECT username, password FROM tbl_user WHERE username=?";
         // TODO prepare()
 		$statement = $mysqli->prepare($query);
 		// TODO bind_param()
@@ -44,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 					session_start();
 					$_SESSION['loggedIn'] = true;
 					$_SESSION['username'] = $username;
-					header('Location: http://localhost:8082/fotiface/app/fotiface.html#!/home');
+					header('Location: http://localhost:8082/fotiface/#!/gallery');
 				} else {
 					$error .= "Benutzername oder Passwort sind falsch";
 				}
@@ -55,19 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)){
 	}
 }
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>fotiface - Login</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-</head>
-
-<body>
     <div id="backgroundDiv">
         <div class="container" id="loginDiv">
             <h3>Login</h3>

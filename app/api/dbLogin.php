@@ -1,16 +1,46 @@
 <?php
 
-    include('dbConnect.php');
+include('dbConnect.php');
 
-    session_start();
+session_start();
 
-    $form_data = json_decode(file_get_contents('php://input'));
+$form_data = json_decode(file_get_contents("php://input"));
 
-    $_SESSION['name'] = $form_data->username;
+$validation_error = '';
 
-    $query = 'SELECT username, password FROM user WHERE username = ?';
-    
-    $statement = $mysqli->prepare($query);
+$username = $form_data->username;
 
-    $statement->bind_param('s', $formdata->username);
+$query = "SELECT * FROM tbl_user WHERE username =?";
 
+$statement = $mysqli->prepare($query);
+
+$statement->bind_param("s", $username);
+
+$statement->execute();
+
+$result = $statement->get_result();
+
+if($result->num_rows>0){
+    while ($row = $result->fetch_assoc()){
+        if(password_verify($form_data->password, $row['password'])){
+            $_SESSION['userId'] = $row['id'];
+        } else {
+            $validation_error = 'Benutzername oder Passwort sind falsch';
+        }
+    }
+} else {
+    $validation_error = 'Benutzername oder Passwort sind falsch';
+}
+
+$output = array(
+    'error' => $validation_error
+);
+
+$json = json_encode($output);
+echo $json;
+
+$result->free();
+$statement->close();
+exit;
+
+?>

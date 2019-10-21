@@ -1,9 +1,3 @@
-<?php 
-
-    echo "PHP";
-
-?>
-
 <div class="container">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
