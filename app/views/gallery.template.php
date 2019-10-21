@@ -1,16 +1,18 @@
 <div class="container">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand">fotiface</a>
+            <a class="navbar-brand"><b>fotiface</b></a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#!home">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#!user">User</a>
+                        <a class="nav-link" href="#!gallery">Gallery</a>
                     </li>
                 </ul>
+                <form method="POST" ng-submit="submitLogout()" class="form-inline my-2 my-lg-0">
+                    <div class="form-group">
+                        <button class="btn btn-outline-secondary my-2 my-sm-0" name= "logout" type="submit">Logout</button>
+                    </div> 
+                </form>
             </div>
         </nav>
     </div>
@@ -39,3 +41,4 @@
         </form>
     </div>
 </div>
+{{msg}}

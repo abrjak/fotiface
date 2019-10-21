@@ -2,7 +2,7 @@
 
 include('dbConnect.php');
 
-$user_id = 1;
+$user_id = $_SESSION["userId"];
 
 $images = array();
 

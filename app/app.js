@@ -55,6 +55,13 @@ app.controller('GalleryController', function($scope, $http, $location){
             $http.get('app/api/dbGetUserImages.php').then(function(response){
                 $scope.images = response.data;
             });
+
+            $scope.submitLogout = function(){
+                $http.get('app/api/destroyPHPSession.php').then(function(){
+                        $location.path('/login');
+                });
+            };
+
         }
     });
 });

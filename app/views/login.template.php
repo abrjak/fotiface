@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="container-fluid">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand">fotiface</a>
+			<a class="navbar-brand"><b>fotiface</b></a>
 		</nav>
 	</div>
 
