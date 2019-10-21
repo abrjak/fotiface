@@ -2,9 +2,9 @@
     session_start();
 ?>
 
-<!DOCTYPE html lang="de">
+<!DOCTYPE html>
 
-<html ng-app="fotiface">
+<html ng-app="fotiface" lang="de">
 
 <head>
     <meta charset="utf-8">
