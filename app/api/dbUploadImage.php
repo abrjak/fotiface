@@ -36,6 +36,10 @@ $statement->execute();
 
 $statement->close();
 
+header('Location: http://localhost/fotiface/#!/gallery');
+
+exit;
+
 
 
 
